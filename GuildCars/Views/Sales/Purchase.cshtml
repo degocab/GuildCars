@@ -1,0 +1,158 @@
+﻿@model GuildCars.Models.VehicleSalesStatesPurchaseTypeVM
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+
+<br />
+
+<div class="purchase-form-sales">
+    <h2>PURCHASE</h2>
+    <div class="container form-inline col-md-12">
+
+        <div class="carItem-newResult">
+            <input type="hidden" id="VehicleId" value="@Model.Vehicle.VehicleId  " name="VehicleId">
+            <div class="container">
+
+                <div class="col-md-3  form-inline " id="newResult-Id">
+
+                    <h5><strong>  @Model.Vehicle.Year   @Model.Vehicle.Make     @Model.Vehicle.Model  </strong></h5>
+                    <img class="img-cars" src="@Model.Vehicle.Picture " />
+                </div>
+                <div class="form-inline col-md-3" id="newResult-Id">
+                    <h5><strong>Body Style: </strong>  @Model.Vehicle.BodyStyle  </h5>
+                    <h5><strong>Trans: </strong>  @Model.Vehicle.Transmission  </h5>
+                    <h5><strong>Color: </strong>  @Model.Vehicle.EColor  </h5>
+
+                </div>
+                <div class="form-inline col-md-3" id="newResult-Id">
+                    <h5><strong>Interior: </strong>  @Model.Vehicle.IColor  </h5>
+                    <h5><strong>Mileage: </strong>  @Model.Vehicle.Mileage  </h5>
+                    <h5><strong>VIN #: </strong>  @Model.Vehicle.VIN  </h5>
+
+                </div>
+                <div class="form-inline col-md-3" id="newResult-Id">
+                    <h5><strong>Sale Price: </strong>$  @Model.Vehicle.Price  </h5>
+                    <h5><strong>MSRP: </strong>$ @Model.Vehicle.MSRP  </h5>
+
+
+                </div>
+                <br />
+                <div class="col-md-9">
+                    <div>
+                        <h5><strong>Description: </strong>@Model.Vehicle.Description</h5>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="form-horizontal">
+        <h3>SALES INFORMATION</h3>
+
+        @using (Html.BeginForm())
+    {
+
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.ExteriorColorId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="container">
+                <div class="purchase-form col-md-5">
+                    <div class="purchase-form ">
+                        Name
+                        @*<input class="form-control" type="text" id="name-input" />*@
+                        @Html.TextBoxFor(m => m.Sale.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="purchase-form ">
+                        Email
+                        @Html.TextBoxFor(m => m.Sale.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="purchase-form ">
+                        Street 1
+                        @Html.TextBoxFor(m => m.Sale.Street1, new { @class = "form-control" })
+                    </div>
+                    <div class="purchase-form ">
+
+                        City
+                        @Html.TextBoxFor(m => m.Sale.City, new { @class = "form-control" })
+                    </div>
+                    <div class="purchase-form ">
+                        Zipcode
+                        @Html.TextBoxFor(m => m.Sale.Zipcode, new { @class = "form-control" })
+                    </div>
+
+                    @*@Html.EditorFor(model => model.ExteriorColorId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ExteriorColorId, "", new { @class = "text-danger" })*@
+                </div>
+                <div class="col-md-5">
+
+                    <div class="purchase-form ">
+                        Phone
+                        @Html.TextBoxFor(m => m.Sale.Phone, new { @class = "form-control" })
+
+                    </div>
+
+
+                    <div class="purchase-form ">
+                    </div>
+                    <div class="purchase-form ">
+                        Street 2
+                        @Html.TextBoxFor(m => m.Sale.Street2, new { @class = "form-control" })
+                    </div>
+                    <div class="purchase-form ">
+                        State
+                        <br />
+
+                        <select id="StateId" name="StateId">
+                            @foreach (var state in Model.States)
+                        {
+                            <option value="@state.StateId">@state.StateAbbrevation</option>
+                    }
+                        </select>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="container">
+                <div class="purchase-form col-md-5">
+                    Purchased Price
+                    @Html.TextBoxFor(m => m.Sale.PurchasedPrice, new { @class = "form-control" })
+                </div>
+                <div class="purchase-form col-md-5">
+                    Purchase Type
+                    <br />
+                    <select id="PurchaseTypeId" name="PurchaseTypeId">
+                        @foreach (var type in Model.PurchaseTypes)
+                    {
+                        <option value="@type.PurchaseTypeId">@type.Type</option>
+                }
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+        <br />
+        <button class="btn btn-primary">CREATE</button>
+        <div>
+            <button id="add-ButtonAdmin" class="btn">@Html.ActionLink("BACK", "SaleSearch", null, new { @class = "add-AdminBtn" })</button>
+
+        </div>
+}
+    </div>
+
+    <div>
+
+    </div>
+</div>

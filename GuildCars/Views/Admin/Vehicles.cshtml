@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Vehicles";
+}
+<div id="search-container">
+    <br />
+
+    <div class="search-Bar">
+        <h2 id="used-title">ADMIN</h2>
+        <button id="add-ButtonAdmin" class="btn">@Html.ActionLink("ADD VECHICLE", "AddVehicle", "Admin", null, new { @class = "add-AdminBtn" })</button>
+        <div id="admin-Search" class="row">
+            <div class="col-md-4">
+                <h3>QUICK SEARCH</h3>
+                <input id="admin-Input" type="text" placeholder="ENTER MAKE, MODEL, OR YEAR" class="form-control input-md">
+            </div>
+            <div class="col-md-4 form-inline">
+                <h3>PRICE</h3>
+                <select id="min-PriceAdmin" name="selectbasic" class="form-inline btn">
+                    <option value="1">NO MIN</option>
+                    <option value="30000">$30,000</option>
+                    <option value="40000">$40,000</option>
+                    <option value="50000">$50,000</option>
+                    <option value="60000">$60,000</option>
+                    <option value="70000">$70,000</option>
+                </select>
+                <select id="max-PriceAdmin" name="selectbasic" class="form-inline btn">
+                    <option value="99999999">NO MAX</option>
+                    <option value="30000">$30,000</option>
+                    <option value="40000">$40,000</option>
+                    <option value="50000">$50,000</option>
+                    <option value="60000">$60,000</option>
+                    <option value="70000">$70,000</option>
+                </select>
+
+            </div>
+            <div class="col-md-4 ">
+                <h3>YEAR</h3>
+                <select id="min-YearAdmin" name="selectbasic" class="form-inline btn">
+                    <option value="1">NO MIN</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                </select>
+                <select id="max-YearAdmin" name="selectbasic" class="form-inline btn">
+                    <option value="9999">NO MAX</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div style="text-align:center;">
+                <button id="search-ButtonAdmin" type="submit" name="singlebutton" class="btn " onclick="loadAdminCars()">SEARCH</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+<div id="search-results-id">
+    <h3>SEARCH RESULTS</h3>
+    <div id="contentRows-Admin" class="row">
+
+
+
+
+
+    </div>
+
+</div>
+
+<script>
+
+    function loadAdminCars() {
+        $('#contentRows-Admin').empty();
+        var minPriceAdmin = $('#min-PriceAdmin option:selected').val();
+        var maxPriceAdmin = $('#max-PriceAdmin option:selected').val();
+        var minYearAdmin = $('#min-YearAdmin option:selected').val();
+        var maxYearAdmin = $('#max-YearAdmin option:selected').val();
+
+        var data = { QuickSearch: $('#admin-Input').val(), };
+
+        var contentRows = $('#contentRows-Admin');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:64068/Admin/Vehicles',
+            data: data,
+            success: function (vehicleusedArray) {
+                $.each(vehicleusedArray, function (index, vehicle) {
+                    var VehicleId = vehicle.VehicleId;
+                    var ExteriorColorId = vehicle.ExteriorColorId;
+                    var InteriorColorId = vehicle.InteriorColorId;
+                    var ModelId = vehicle.ModelId;
+                    //var MakeId = vehicle.MakeId;
+                    var Year = vehicle.Year;
+                    var Price = vehicle.Price;
+                    var DateAdded = vehicle.DateAdded;
+                    var Transmission = vehicle.Transmission;
+                    var BodyStyle = vehicle.BodyStyle;
+                    var Mileage = vehicle.Mileage;
+                    var VIN = vehicle.VIN;
+                    var MSRP = vehicle.MSRP;
+                    var Description = vehicle.Description;
+                    var Condition = vehicle.Condition;
+                    var Featured = vehicle.Featured;
+                    var Model = vehicle.Model;
+                    var Make = vehicle.Make;
+                    var Picture = vehicle.Picture;
+                    var IColor = vehicle.IColor;
+                    var EColor = vehicle.EColor;
+                    var row = '<div class="container form-inline col-md-12">' +
+                        '<div class="carItem-adminResult">' +
+                        '<div class="col-md-3  form-inline " id="adminResult-Id">' +
+                        '<h5><strong>' + Year + ' ' + Make + ' ' + Model + '</strong></h5>' + '<img class="img-cars" src="' + Picture + '"/>' +
+                        '</div >' +
+                        '<div class="form-inline col-md-3" id="adminResult-Id"><h5><strong>Body Style: </strong>' + BodyStyle + '</h5>' +
+                        '<h5><strong>Trans: </strong>' + Transmission + '</h5>' +
+                        '<h5><strong>Color: </strong>' + EColor + '</h5>' +
+                        '</div>' +
+                        '<div class="form-inline col-md-3" id="adminResult-Id"><h5><strong>Interior: </strong>' + IColor + '</h5>' +
+                        '<h5><strong>Mileage: </strong>' + Mileage + '</h5>' +
+                        '<h5><strong>VIN #: </strong>' + VIN + '</h5>' +
+                        '</div>' +
+                        '<div class="form-inline col-md-3" id="adminResult-Id"><h5><strong>Sale Price: </strong>$' + Price + '</h5>' +
+                        '<h5><strong>MSRP: </strong>$' + MSRP + '</h5>' +
+                        //'<button id="details-' + VehicleId + '" data-vehicleId="' + VehicleId + '" type="submit"  name="details-btn" class="carDetailClass btn " onclick="">Details</button>'
+                        '<a href="http://localhost:64068/Admin/EditVehicle?VehicleId=' + VehicleId + '" class="button">Details</a>'
+                        + '</div>'
+                    '</div >' +
+                        '</div>';
+
+
+
+
+
+
+
+                    if ((minPriceAdmin == 1 || (Price >= minPriceAdmin)) && (maxPriceAdmin == 99999999 || (Price <= maxPriceAdmin)) && (minYearAdmin == 1 || (Year >= minYearAdmin)) && (maxYearAdmin == 9999 || (Year <= maxYearAdmin))) {
+                        contentRows.append(row);
+
+
+                    }
+                })
+            }
+        })
+    }
+
+</script>

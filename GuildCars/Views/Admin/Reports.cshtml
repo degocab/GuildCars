@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Reports";
+}
+
+<br />
+
+<div class="add-form">
+    <h2>REPORTS</h2>
+
+    @Html.ActionLink("INVENTORY", "InventoryReport", "Admin", null, new { @class = "report-link" })
+    <br />
+    @Html.ActionLink("SALES", "SalesReport", "Admin", null, new { @class = "report-link" })
+
+</div>

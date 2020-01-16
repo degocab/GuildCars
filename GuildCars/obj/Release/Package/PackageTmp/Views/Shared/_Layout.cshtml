@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="col-md-2" id="guild-car-title">
+        GUILD CARS
+    </div>
+
+    <div class="navbar-collapse collapse" id="nav-bar">
+        <ul class="nav navbar-nav">
+
+
+            <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+            <li>@Html.ActionLink("NEW INVENTORY", "SearchNew", "Inventory")</li>
+            <li>@Html.ActionLink("USED INVENTORY", "SearchUsed", "Inventory")</li>
+            <li>@Html.ActionLink("SPECIALS", "GetAllSpecials", "Home")</li>
+            <li>@Html.ActionLink("CONTACT", "Contact", "Home")</li>
+
+
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+
+                <li>@Html.ActionLink("SALES", "SaleSearch", "Sales")</li>
+
+
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+
+                <li class="dropdown">
+                    <a id="login-image" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        ADMIN
+
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("VEHICLES", "Vehicles", "Admin")</li>
+                        <li>@Html.ActionLink("USERS", "ListUser", "Account")</li>
+                        <li>@Html.ActionLink("ADD USER", "UserAdd", "Account")</li>
+                        <li>@Html.ActionLink("CREATE SPECIAL", "CreateSpecial", "Admin")</li>
+                        <li>@Html.ActionLink("REPORTS", "Reports", "Admin")</li>
+                    </ul>
+                </li>
+
+            }
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+    <div>
+
+    </div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

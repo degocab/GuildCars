@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "SalesReport";
+}
+
+<h2>SALES REPORT</h2>
+
+<div class="search-Bar">
+    <div id="new-Search" class="row">
+        <div class="col-md-4">
+            <h3>FILTERS</h3>
+            <select id="sales-User" name="sales-User" class="btn">
+                <option value="">-All-</option>
+
+            </select>
+            @*<input id="new-Input" type="text" name="User" placeholder="Enter make, model, or year" class="form-control input-md">*@
+        </div>
+
+        <div class="col-md-4 ">
+            <h3>YEAR</h3>
+            <select id="min-YearNew" name="selectbasic" class="form-inline btn">
+                <option value="1753-01-01">No Min</option>
+                <option value="2015-01-01">2015</option>
+                <option value="2016-01-01">2016</option>
+                <option value="2017-01-01">2017</option>
+                <option value="2018-01-01">2018</option>
+
+            </select>
+            <select id="max-YearNew" name="selectbasic" class="form-inline btn">
+                <option value="9999-09-09">No Max</option>
+                <option value="2015-01-01">2015</option>
+                <option value="2016-01-01">2016</option>
+                <option value="2017-01-01">2017</option>
+                <option value="2018-01-01">2018</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div style="text-align:center;">
+            <button id="search-ButtonSales" type="submit" name="singlebutton" class="btn " onclick="loadSales()">Button</button>
+        </div>
+    </div>
+</div>
+<br />
+<div class="user-form">
+    <h3>SEARCH RESULTS</h3>
+    <div id="contentRows-New" class="container">
+        <table id="contentRows-tables" class="table-striped ">
+            <thead>
+                <tr>
+                    <td>User</td>
+                    <td>Total Sales</td>
+                    <td>Total Vehicles</td>
+                </tr>
+
+            </thead>
+            <tbody id="contentRows-sales"></tbody>
+        </table>
+
+    </div>
+    </div>
+    <script>
+        window.onload = loadNames;
+        function loadNames() {
+            var contentRows = $('#sales-User');
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:64068/Admin/SalesReport',
+                success: function (allusersArray) {
+                    $.each(allusersArray, function (index, allusers) {
+                        var Name = allusers.Name;
+                        var row = '<option value=' + Name + '>' + Name + '</option>';
+                        contentRows.append(row);
+                    })
+                }
+            })
+        };
+        function loadSales() {
+            $('#contentRows-sales').empty();
+            var contentRows = $('#contentRows-sales');
+            var data = { SaleDateMin: $('#min-YearNew').val(), SaleDateMax: $('#max-YearNew').val(), Name: $('#sales-User').val(), };
+            //var data = { Users: $('sales-User').val(), };
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:64068/Admin/SalesReport',
+                data: data,
+                success: function (searchReportsArray) {
+                    $.each(searchReportsArray, function (index, searchReport) {
+                        var Name = searchReport.Name;
+                        var Sum = searchReport.Sum;
+                        var Count = searchReport.Count;
+
+                        var row = '<tr><td>' + Name + '</td>' +
+                            '<td>' + Sum + '</td>' +
+                            '<td>' + Count + '</td><>';
+
+
+
+                        contentRows.append(row);
+                    })
+                }
+            })
+        };
+
+    </script>

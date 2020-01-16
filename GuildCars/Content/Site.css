@@ -1,0 +1,457 @@
+﻿body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select {
+    max-width: 280px;
+}
+
+#guild-car-title {
+    text-align: center;
+    font-size: 20px;
+    background: #832323;
+    height: 60px;
+    line-height: 20px;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#main-Jumbotron {
+    border-radius: 0px;
+    margin-top: 25px;
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+    padding-right: 60px;
+    padding-left: 60px;
+}
+/*#navbar-main {
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 25px;
+
+    background-color: none;
+    background-position-y: -50px;
+    background-color: white;
+
+}*/
+#nav-bar {
+    font-size: 20px;
+    /*max-width: 1000px;*/
+    background-color: none;
+    background-color: #303030;
+    outline: solid;
+    outline-width: 1px;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+    a:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+.carItem {
+    text-align: center;
+    height: 200px;
+    width: 80%;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    background-color: #303030;
+    -webkit-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    color: white;
+}
+
+.carItem-usedResult, .carItem-newResult, .carItem-adminResult {
+    text-align: center;
+    height: 150px;
+    margin-top: 20px;
+    background-color: #333333;
+    -webkit-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    color: white;
+}
+address > a {
+    color: white;
+}
+address > a:hover {
+    color: #8cb5ea;
+    background-color: inherit;
+}
+.search-Bar, .add-form {
+    color: #8cb5ea;
+    margin-left: 25px;
+    background-color: #333333;
+    /*height: 160px;*/
+    padding: 10px;
+    padding-top: 5px;
+}
+.contact-form {
+    color: white;
+    margin-left: 25px;
+    background-color: #333333;
+    /*height: 160px;*/
+    padding: 10px;
+    padding-top: 5px;
+}
+.purchase-form-sales, .user-form {
+    color: #8cb5ea;
+    margin-left: 25px;
+    background-color: #303030;
+    /*height: 160px;*/
+    padding: 10px;
+    padding-top: 5px;
+}
+#used-Search, #new-Search, #sale-Search, #admin-Search {
+    padding-top: 0px;
+    margin-top: 10px;
+    color: #8cb5ea;
+}
+
+#min-PriceUsed, #max-PriceUsed, #min-YearUsed, #max-YearUsed, #min-PriceNew, #max-PriceNew, #min-YearNew, #max-YearNew {
+    width: 100px;
+    height: 34px;
+}
+
+select > option {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    text-transform: uppercase;
+}
+
+select {
+    background-color: white;
+    height: 34px;
+}
+
+#used-Input, #new-Input {
+    height: 30px;
+}
+
+#search-ButtonUsed, #search-ButtonNew, #search-ButtonSales, #add-ButtonAdmin, #search-ButtonAdmin, #add-form-back-btn {
+    background-color: #832323;
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+    #search-ButtonUsed:hover, #search-ButtonNew:hover, a.button:hover, #search-ButtonSales:hover, #add-ButtonAdmin:hover, #search-ButtonAdmin:hover, .add-AdminBtn:hover {
+        background-color: #8cb5ea;
+        color: white;
+    }
+
+button[name=details-btn] {
+    background-color: lightgrey;
+}
+
+#usedResult-Id, #newResult-Id, #adminResult-Id {
+    text-align: left;
+}
+
+.carItem-Details {
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 0px;
+    background-color: #303030;
+    -webkit-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    color: white;
+}
+
+#details-ContactUs {
+    margin-bottom: 10px;
+}
+
+.car-Index-Details:hover {
+    color: grey;
+}
+
+.specials-Index-Details {
+    color: darkgray;
+    background-image: linear-gradient(to right,white,none);
+}
+
+.carItem:hover {
+    -webkit-box-shadow: 1px 1px 5px 8px #832323;
+    -moz-box-shadow: 1px 1px 5px 8px #832323;
+    box-shadow: 1px 1px 5px 10px #832323;
+}
+
+.add-AdminBtn, #add-form-back-btn {
+    color: white;
+}
+
+.navbar-default.transparent {
+    background-color: transparent;
+}
+
+div[id^="id-"] {
+    min-height: 400px;
+    background-size: cover;
+    background-position: center center;
+    background-color: lightsteelblue;
+    background-image: url(/Pictures/ford.jpg);
+}
+
+
+/* Carousel Fade Effect */
+.carousel.carousel-fade .item {
+    -webkit-transition: opacity .5s linear;
+    -moz-transition: opacity .5s linear;
+    -o-transition: opacity .5s linear;
+    transition: opacity 3s linear;
+}
+
+.carousel.carousel-fade .active.item {
+    opacity: 1;
+}
+
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.carousel-overlay {
+    padding: 20px;
+    position: absolute;
+    bottom: 100px;
+    right: 0;
+    left: 0;
+}
+
+.slide-text {
+    /*padding: 20px;*/
+    font-weight: bolder;
+    color: #8cb5ea;
+    font-family: Arial;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+#content-body-id {
+    background-color: #23282e;
+}
+
+#search-results-id {
+    color: #8cb5ea;
+    margin-left: 25px;
+    background-color: #23282e;
+    /*height: 160px;*/
+    padding: 10px;
+    padding-top: 5px;
+}
+
+#used-title, #sales-title {
+    color: #8cb5ea;
+}
+
+#featured-id {
+    color: #8cb5ea;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+div[class="slide"]:hover {
+    color: darkgrey;
+}
+
+#singlebutton {
+    border-radius: 0px;
+    -webkit-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.56);
+}
+
+#Phone, #Email, #Message, #Name {
+    border-radius: 0px;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: initial;
+}
+
+
+
+.special-Item {
+    height: 150px;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    background-color: #303030;
+    -webkit-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.56);
+    color: white;
+}
+
+.purchase-form {
+    min-height: 56px;
+}
+
+textarea.form-control {
+    width: 100%;
+}
+
+.img-cars {
+    max-height: 100px;
+}
+
+
+#login-image-logo {
+    height: 30px;
+    top: auto;
+    text-align: center;
+}
+
+#logged-in {
+    font-size: 16px;
+    height: 34px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*background-color:black;*/
+    color: white;
+}
+
+    .navbar-nav > li > a:hover {
+        background-color: #832323;
+    }
+
+a:hover {
+    color: grey;
+    background-color: grey;
+}
+
+#specialsCreate {
+    border: solid 1px black;
+}
+
+.specialsClassItem {
+    padding: 10px;
+}
+
+#contentRows-tables {
+    border: solid 1px black;
+    color: black;
+    text-align:center;
+    background-color: white;
+}
+
+td {
+    padding: 20px;
+}
+
+a.button {
+    background-color: #832323;
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.specials-class-head {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#specials-title {
+    color: #8cb5ea;
+}
+
+#delete-special-btn {
+    margin-right: 25px;
+}
+
+.dropdown-menu {
+    background-color: #832323;
+    color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #832323;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #832323;
+    border-color: #428bca;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: white;
+    white-space: nowrap;
+}
+
+    .dropdown-menu > li > a:hover {
+        background-color: #8cb5ea
+    }
+.report-link{
+    color: white;
+}
+    .report-link:hover {
+        color: #8cb5ea;
+        background-color: inherit;
+    }
+dd>a{
+    color:white;
+}
+    dd > a:hover {
+        color: #8cb5ea;
+        background-color:inherit;
+    }
+
+
+/*For designing with div outlines*/
+/*div {
+    border: 1px solid black;
+}*/

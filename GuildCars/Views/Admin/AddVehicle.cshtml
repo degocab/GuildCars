@@ -1,0 +1,206 @@
+﻿@model GuildCars.Models.VehicleAddVM
+
+@{
+    ViewBag.Title = "AddVehicle";
+}
+<br />
+
+<div class="add-form">
+
+
+    @using (Html.BeginForm(Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" })))
+    {
+        <div class="form-group">
+
+            <div class="container">
+
+                <h2>ADD VEHICLE</h2>
+                <div class="purchase-form col-md-5">
+                    <div class="purchase-form ">
+                        Make
+                        <br />
+                        <select id="make-select" onchange="loadModels()" class=" form-control">
+                            <option>Default</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Model
+                        <br />
+                        <select id="model-select" name="ModelId" class=" form-control">
+                            <option>Default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="purchase-form col-md-5">
+
+                    <div class="purchase-form">
+                        Type
+                        <br />
+                        <select id="Condition" name="Condition" class=" form-control">
+                            <option value="0">Used</option>
+                            <option value="1">New</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Body Style
+                        <br />
+                        <select id="BodyStyle" name="BodyStyle" class=" form-control">
+                            <option value="Car">Car</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Van">Van</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="purchase-form col-md-5">
+                    <div class="purchase-form ">
+
+                        Year
+                        @Html.TextBoxFor(m => m.Vehicle.Year, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Transmission
+                        <br />
+                        <select id="Transmission" name="Transmission" class=" form-control">
+                            <option value="Automatic">Automatic</option>
+                            <option value="Manual">Manual</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+
+                    <div class="purchase-form ">
+                        Interior Color
+                        <br />
+                        <select id="InteriorColorId" name="InteriorColorId" class=" form-control">
+                            <option value="1">Red</option>
+                            <option value="2">Black</option>
+                            <option value="3">White</option>
+                            <option value="4">Blue</option>
+                            <option value="5">Silver</option>
+                            <option value="6">Green</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+
+                    <div class="purchase-form ">
+                        Exterior Color
+                        <br />
+                        <select id="ExteriorColorId" name="ExteriorColorId" class=" form-control">
+                            <option value="1">Red</option>
+                            <option value="2">Black</option>
+                            <option value="3">White</option>
+                            <option value="4">Blue</option>
+                            <option value="5">Silver</option>
+                            <option value="6">Green</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Mileage
+                        @Html.TextBoxFor(m => m.Vehicle.Mileage, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        VIN #
+                        @Html.TextBoxFor(m => m.Vehicle.VIN, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form">
+                        MSRP
+                        @Html.TextBoxFor(m => m.Vehicle.MSRP, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form">
+                        Sale Price
+                        @Html.TextBoxFor(m => m.Vehicle.Price, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-10" style="width:100%;">
+                    Description
+                    @Html.TextAreaFor(m => m.Vehicle.Description, new { @class = "form-control", @style = "width:100%;" })
+                </div>
+                <div class="col-md-10">
+                    Picture
+
+                    <div class="form-group">
+                        <label>Select File:</label>
+                        @Html.TextBoxFor(m => m.UploadedFile, new { type = "file", value = "" })
+                    </div>
+
+                    <button id="search-ButtonAdmin" type="submit" name="singlebutton" class="btn ">CREATE</button>
+
+                    <br />
+                    <div>
+                        <button id="add-ButtonAdmin" class="btn">@Html.ActionLink("BACK", "Vehicles",null, new { @class = "add-AdminBtn" })</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    }
+
+
+</div>
+<script>
+    var MakeId = 0;
+    function loadMakes() {
+
+        var contentRows = $('#make-select');
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:64068/api/make',
+            success: function (makeArray) {
+                $.each(makeArray, function (index, make) {
+                    MakeId = make.MakeId;
+                    var Make = make.make;
+                    var row = '<option id ="make-Id" value="' + MakeId + '" onclick="loadModels()">' + Make + '</option>';
+                    contentRows.append(row);
+                })
+            }
+
+        })
+    }
+    function loadModels() {
+        $('#model-select').empty();
+        var contentRows = $('#model-select');
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:64068/api/model',
+            success: function (modelArray) {
+                $.each(modelArray, function (index, model) {
+                    var ModelId = model.ModelId;
+                    var Model = model.model;
+                    var MakeId2 = model.MakeId;
+                    var row = '<option value="' + ModelId + '">' + Model + '</option>';
+                    if ($('#make-select :selected').val() == MakeId2) {
+                        contentRows.append(row);
+                    }
+                })
+            }
+        })
+    }
+    window.onload = loadMakes;
+</script>

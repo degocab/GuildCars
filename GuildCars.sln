@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildCars.UI", "GuildCars\GuildCars.UI.csproj", "{A8E5C8CC-D1B3-4F72-93E8-1730D48253B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildCars.Models", "GuildCars.Models\GuildCars.Models.csproj", "{CF753AFD-4810-4B83-8FFC-0AB243161CC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildCars.DAL", "GuildCars.DAL\GuildCars.DAL.csproj", "{8BB2C46B-1246-43B0-9EC1-7010A61EC56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildCars.BLL", "GuildCars.BLL\GuildCars.BLL.csproj", "{AE56C0B9-FD49-4528-80C6-514E4CF54DE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{84761343-DC8A-4D61-BF4F-C51100CA7A9D}"
+	ProjectSection(SolutionItems) = preProject
+		GuildCars.CreateDatabase.sql = GuildCars.CreateDatabase.sql
+		GuildCars.CreateTables.sql = GuildCars.CreateTables.sql
+		GuildCars.SampleData.sql = GuildCars.SampleData.sql
+		GuildCars.Sprocs.sql = GuildCars.Sprocs.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8E5C8CC-D1B3-4F72-93E8-1730D48253B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E5C8CC-D1B3-4F72-93E8-1730D48253B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E5C8CC-D1B3-4F72-93E8-1730D48253B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E5C8CC-D1B3-4F72-93E8-1730D48253B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF753AFD-4810-4B83-8FFC-0AB243161CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF753AFD-4810-4B83-8FFC-0AB243161CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF753AFD-4810-4B83-8FFC-0AB243161CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF753AFD-4810-4B83-8FFC-0AB243161CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB2C46B-1246-43B0-9EC1-7010A61EC56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB2C46B-1246-43B0-9EC1-7010A61EC56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB2C46B-1246-43B0-9EC1-7010A61EC56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB2C46B-1246-43B0-9EC1-7010A61EC56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE56C0B9-FD49-4528-80C6-514E4CF54DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE56C0B9-FD49-4528-80C6-514E4CF54DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE56C0B9-FD49-4528-80C6-514E4CF54DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE56C0B9-FD49-4528-80C6-514E4CF54DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE359A76-1DE7-4FBB-9CAC-4D75DB91B1B6}
+	EndGlobalSection
+EndGlobal

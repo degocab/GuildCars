@@ -1,0 +1,57 @@
+﻿@model GuildCars.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+
+<div id="search-results-id">
+
+
+    <h2>DETAILS</h2>
+    <div class="container form-inline col-md-12">
+
+        <div class="carItem-Details">
+            <div class="container">
+                <div class=" container">
+                    <div class="col-md-3 row " id="usedResult-Id">
+
+                        <h5><strong>  @Model.Year @Model.Make @Model.Model</strong></h5>
+                        <img class="img-cars" src=" @Model.Picture" />
+                    </div>
+                    <div class="col-md-3" id="usedResult-Id">
+                        <h5><strong>Body Style: </strong>  @Html.DisplayFor(mode => Model.BodyStyle)  </h5>
+                        <h5><strong>Trans: </strong>  @Html.DisplayFor(mode => Model.Transmission) </h5>
+                        <h5><strong> Color: </strong> @Html.DisplayFor(mode => Model.EColor) </h5>
+
+
+                    </div>
+                    <div class="col-md-3" id="usedResult-Id">
+                        <h5><strong>Interior: </strong>  @Html.DisplayFor(mode => Model.IColor) </h5>
+                        <h5><strong> Mileage: </strong> @Html.DisplayFor(mode => Model.Mileage) </h5>
+                        <h5><strong> VIN #: </strong>  @Html.DisplayFor(mode => Model.VIN) </h5>
+
+                    </div>
+                    <div class="col-md-3" id="usedResult-Id">
+                        <h5><strong>Sale Price: </strong>@Model.Price.ToString("c")</h5>
+                        <h5><strong>MSRP: </strong>@Model.MSRP.ToString("c")</h5>
+                    </div>
+                    <br />
+                    <div class="col-md-9">
+                        <div>
+                            <h5><strong>Description: </strong>@Model.Description</h5>
+                        </div>
+                        <a href="@Url.Action("Contact","Home",new { VIN = Model.VIN})" class="button">Contact Us</a>
+                        @*<button id="details-ContactUs" data-vehicleId="VehicleId" type="submit" class="carDetailClass btn " href="@Url.Action("Contact","Home",new { VIN = Model.VIN})">Contact Us</button>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+

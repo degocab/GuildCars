@@ -1,0 +1,59 @@
+﻿@model GuildCars.Models.SpecialsVM
+@{
+    ViewBag.Title = "CreateSpecial";
+}
+
+<br />
+
+<div class="add-form">
+    <h2>Specials</h2>
+
+    <div class="container" id="specialsCreate">
+
+        <div class="row" style="text-align:left">
+            <div class="specialsClassItem">
+                <strong>Special Title</strong>
+                @Html.TextBoxFor(modelItem => Model.Specials.Title)
+            </div>
+            <br />
+        </div>
+        <div class="row" style="text-align:left">
+            <div class="specialsClassItem">
+                <strong>Description</strong>
+                @Html.TextAreaFor(modelItem => Model.Specials.Description)
+                <br />
+                <a href="@Url.Action("CreateSpecial", "Admin", new { id = Model.Specials.SpecialsId })" class="button">Save</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    @foreach (var item in Model.ListOfSpecials)
+    {
+
+
+        <div class="container form-inline col-md-12">
+
+            <div class="special-Item">
+                <div class="form-inline">
+
+                    <div class="col-md-10">
+                        <strong>@Html.DisplayFor(modelItem => item.Title)</strong>
+                        <br />
+
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    <div class="col-md-2"id="delete-special-btn">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Delete", "Delete", new { id = item.SpecialsId })" class="button">Delete</a>
+
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    }

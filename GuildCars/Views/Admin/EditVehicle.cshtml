@@ -1,0 +1,270 @@
+﻿@model GuildCars.Models.Vehicle
+
+@{
+    ViewBag.Title = "EditVehicle";
+}
+
+
+<br />
+
+<div class="add-form">
+    @using (Html.BeginForm(Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" })))
+    {
+        <input type="hidden" id="oldMakeId" value="@Model.MakeId" />
+        @*<input type="hidden" id="oldTypeId" value="@Model.Condition" />*@
+        <input type="hidden" id="oldBodyStyleId" value="@Model.BodyStyle" />
+        <input type="hidden" id="oldTransmissionId" value="@Model.Transmission" />
+        <input type="hidden" id="oldInteriorColorId" value="@Model.InteriorColorId" />
+        <input type="hidden" id="oldExteriorColorId" value="@Model.ExteriorColorId" />
+
+
+
+
+        <div class="form-group">
+            <div class="container">
+
+                <h2>EDIT FORM</h2>
+                <div class="purchase-form col-md-5">
+                    <div class="purchase-form ">
+                        Make
+                        <br />
+                        <select id="make-select" onchange="loadModels()" onload="loadSelectedMake()" class=" form-control">
+                            <option>Default</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Model
+                        <br />
+                        <select id="model-select" name="ModelId" class=" form-control">
+                            <option>Default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="purchase-form col-md-5">
+
+                    <div class="purchase-form">
+                        Type
+                        <br />
+                        <select id="Condition" name="Condition" class=" form-control">
+                            <option value="0">Used</option>
+                            <option value="1">New</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Body Style
+                        <br />
+                        <select id="BodyStyle" name="BodyStyle" class=" form-control">
+                            <option value="Car">Car</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Van">Van</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="purchase-form col-md-5">
+                    <div class="purchase-form ">
+
+                        Year
+                        @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Transmission
+                        <br />
+                        <select id="Transmission" name="Transmission" class=" form-control">
+                            <option value="Automatic">Automatic</option>
+                            <option value="Manual">Manual</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+
+                    <div class="purchase-form ">
+                        Interior Color
+                        <br />
+                        <select id="InteriorColorId" name="InteriorColorId" class=" form-control">
+                            <option value="1">Red</option>
+                            <option value="2">Black</option>
+                            <option value="3">White</option>
+                            <option value="4">Blue</option>
+                            <option value="5">Silver</option>
+                            <option value="6">Green</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+
+                    <div class="purchase-form ">
+                        Exterior Color
+                        <br />
+                        <select id="ExteriorColorId" name="ExteriorColorId" class=" form-control">
+                            <option value="1">Red</option>
+                            <option value="2">Black</option>
+                            <option value="3">White</option>
+                            <option value="4">Blue</option>
+                            <option value="5">Silver</option>
+                            <option value="6">Green</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        Mileage
+                        @Html.EditorFor(m => m.Mileage, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form ">
+                        VIN #
+                        @Html.EditorFor(m => m.VIN, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form">
+                        MSRP
+                        @Html.EditorFor(m => m.MSRP, new { @class = "purchase-form" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="purchase-form">
+                        Sale Price
+                        @Html.EditorFor(m => m.Price, new { @class = "purchase-form" })
+                    </div>
+                </div>
+                <div class="col-md-10" style="width:100%;">
+                    Description
+                    @Html.TextAreaFor(m => m.Description, new { @class = "purchase-form", @style = "width:100%;" })
+                </div>
+                <div class="col-md-10">
+                    Picture
+                    <br />
+                    <img src="@Model.Picture" height="100">
+
+                    <div class="form-group">
+                        <label>Replace Picture:</label>
+                        @Html.TextBoxFor(m => m.UploadedFile, new { type = "file", value = "" })
+                    </div>
+                    @Html.ActionLink("Delete", "DeleteVehicle", "Admin", new { VehicleId = Model.VehicleId }, new { @class = "btn btn-danger", @onclick = "confirm('Are you sure?')" })
+                    @*<button class="btn btn-danger" onclick="confirm('Are you sure?')">Delete</button>*@
+                    <button class="btn btn-primary">Save</button>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Featured)
+                                @Html.ValidationMessageFor(model => model.Featured, "", new { @class = "text-danger" })
+                                Feature this Vehicle
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <hr />
+        <div>
+            <button id="add-ButtonAdmin" class="btn">@Html.ActionLink("BACK", "Vehicles", null, new { @class = "add-AdminBtn" })</button>
+
+        </div>
+    }
+
+
+
+
+
+
+
+
+
+    <div>
+        
+    </div>
+</div>
+    <script>
+
+        var MakeId = 0;
+        function loadSelectedMake() {
+            var i = $('#oldMakeId').val();
+            $('#make-select').val(i);
+            var j = $('#oldTransmissionId').val();
+            $('#Transmission').val(j);
+            //var k = $('#oldTypeId').val();
+            //$('#Condition').val(k);
+            var l = $('#oldBodyStyleId').val();
+            $('#BodyStyle').val(l);
+            var m = $('#oldInteriorColorId').val();
+            $('#InteriorColorId').val(m);
+            var n = $('#oldExteriorColorId').val();
+            $('#ExteriorColorId').val(n);
+
+        }
+
+
+        function loadMakes() {
+
+
+
+            var contentRows = $('#make-select');
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:64068/api/make',
+                success: function (makeArray) {
+                    $.each(makeArray, function (index, make) {
+                        MakeId = make.MakeId;
+                        var Make = make.make;
+                        var row = '<option id ="make-' + MakeId + '" value="' + MakeId + '" onclick="loadModels()">' + Make + '</option>';
+                        contentRows.append(row);
+                    })
+                    var i = $('#oldMakeId').val();
+                    $('#make-select').val(i).change();
+                    var j = $('#oldTransmissionId').val();
+                    $('#Transmission').val(j).change();
+                    //var k = $('#oldTypeId').val();
+                    //$('#Condition').val(k).change();
+                    var l = $('#oldBodyStyleId').val();
+                    $('#BodyStyle').val(l).change();
+                    var m = $('#oldInteriorColorId').val();
+                    $('#InteriorColorId').val(m).change();
+                    var n = $('#oldExteriorColorId').val();
+                    $('#ExteriorColorId').val(n).change();
+                }
+
+            })
+        }
+        function loadModels() {
+            $('#model-select').empty();
+            var contentRows = $('#model-select');
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:64068/api/model',
+                success: function (modelArray) {
+                    $.each(modelArray, function (index, model) {
+                        var ModelId = model.ModelId;
+                        var Model = model.model;
+                        var MakeId2 = model.MakeId;
+                        var row = '<option value="' + ModelId + '">' + Model + '</option>';
+                        if ($('#make-select :selected').val() == MakeId2) {
+                            contentRows.append(row);
+                        }
+                    })
+                }
+            })
+        }
+        window.onload = loadMakes;
+    </script>

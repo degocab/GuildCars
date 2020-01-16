@@ -1,0 +1,87 @@
+﻿@model GuildCars.Models.Vehicle
+@{
+    ViewBag.Title = "Contact";
+
+}
+
+
+<br />
+
+<div class="contact-form">
+
+
+    <div class="container">
+
+        <h2>CONTACT US</h2>
+        <div class="col-md-6">
+
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend></legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Name">Name</label>
+                        <div class="col-md-4">
+                            <input id="Name" type="text" placeholder="" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Email">Email</label>
+                        <div class="col-md-4">
+                            <input id="Email" type="text" placeholder="" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Phone">Phone</label>
+                        <div class="col-md-4">
+                            <input id="Phone" type="text" placeholder="" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Message">Message</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="Message" placeholder="">@Model.VIN</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <button id="singlebutton" class="btn">Submit</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23063.888487955803!2d-64.27912452022879!3d-6.880058849192698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1510537274447" width="300" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            <address>
+                -6.879873, -64.280811<br />
+                Brazil<br />
+                <abbr title="Phone">P:</abbr>
+                425.555.0100
+            </address>
+
+            <address>
+                <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
+        </div>
+    </div>
+</div>

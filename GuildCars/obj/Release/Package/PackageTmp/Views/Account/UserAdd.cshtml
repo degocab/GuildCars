@@ -1,0 +1,43 @@
+﻿@model GuildCars.Models.UserVM
+
+
+
+
+
+<br />
+
+<div class="add-form">
+    <h2>ADD USER</h2>
+    <div class="container">
+
+
+        @using (Html.BeginForm("UserAdd", "Account", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddUser" }))
+        {
+            <span class="alert-danger">@Html.ValidationSummary()</span>
+            <div class="Row">
+
+                <div class="col-lg-6">
+                    <label>First Name</label>
+                    @Html.TextBoxFor(m => m.firstName, new { Class = "form-control" })
+                    <label>Email</label>
+                    @Html.TextBoxFor(m => m.userEmail, new { Class = "form-control" })
+                    <label>Password</label>
+                    @Html.TextBoxFor(m => m.password, new { Class = "form-control" })
+                    <button class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-lg-6">
+                    <label>Last Name</label>
+                    @Html.TextBoxFor(m => m.lastName, new { Class = "form-control" })
+                    <label>Role</label>
+                    <select id="selectRole" name="selectRole" class="form-control">
+                        <option value="Admin">Admin</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Disabled">Disabled</option>
+                    </select>
+                    <label>Confirm Password</label>
+                    @Html.TextBoxFor(m => m.confirmPassword, new { Class = "form-control" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

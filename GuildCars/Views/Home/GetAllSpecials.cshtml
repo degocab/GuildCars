@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GuildCars.Models.Specials>
+
+@{
+    ViewBag.Title = "GetAllSpecials";
+}
+<div id="content-body-id">
+    <div class="specials-class-head">
+        <br />
+        <h2 id="specials-title">SPECIALS</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+        </p>
+    </div>
+    @foreach (var item in Model)
+    {
+
+
+        <div class="container form-inline col-md-12">
+
+            <div class="special-Item">
+                <div class="form-inline">
+
+                    <div class="col-md-10">
+                        <strong>@Html.DisplayFor(modelItem => item.Title)</strong>
+                        <br />
+
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    <div class="col-md-2" id="delete-special-btn">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Delete", "Delete", new { id = item.SpecialsId })" class="button">Delete</a>
+
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    }
+
+</div>
+

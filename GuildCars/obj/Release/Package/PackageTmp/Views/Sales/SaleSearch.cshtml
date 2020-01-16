@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "SaleSearch";
+}
+<div id="search-container">
+    <br />
+
+    <div class="search-Bar">
+        <h2 id="sales-title">SALES</h2>
+        <div id="sale-Search" class="row">
+            <div class="col-md-4">
+                <h3>QUICK SEARCH</h3>
+                <input id="sales-Input" type="text" placeholder="ENTER MAKE, MODEL, OR YEAR" class="form-control input-md">
+            </div>
+            <div class="col-md-4 form-inline">
+                <h3>PRICE</h3>
+                <select id="min-PriceSales" name="selectbasic" class="form-inline btn">
+                    <option value="1">NO MIN</option>
+                    <option value="30000">$30,000</option>
+                    <option value="40000">$40,000</option>
+                    <option value="50000">$50,000</option>
+                    <option value="60000">$60,000</option>
+                    <option value="70000">$70,000</option>
+
+                </select>
+                <select id="max-PriceSales" name="selectbasic" class="form-inline btn">
+                    <option value="99999999">NO MAX</option>
+                    <option value="30000">$30,000</option>
+                    <option value="40000">$40,000</option>
+                    <option value="50000">$50,000</option>
+                    <option value="60000">$60,000</option>
+                    <option value="70000">$70,000</option>
+                </select>
+
+            </div>
+            <div class="col-md-4 ">
+                <h3>YEAR</h3>
+                <select id="min-YearSales" name="selectbasic" class="form-inline btn">
+                    <option value="1">NO MIN</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+
+                </select>
+                <select id="max-YearSales" name="selectbasic" class="form-inline btn">
+                    <option value="9999">NO MAX</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div style="text-align:center;">
+                <button id="search-ButtonSales" type="submit" name="singlebutton" class="btn " onclick="loadSalesCars()">SEARCH</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+<div id="search-results-id">
+    <h3>SEARCH RESULTS</h3>
+    <div id="contentRows-Sales" class="row">
+
+
+
+
+
+    </div>
+
+</div>
+
+<script>
+    //function getSearchInput() {
+
+    //}
+    //function getVehicleId() {
+    //    var VehicleId = $('#hidden-Id').val();
+    //    return VehicleId;
+    //}
+
+    function loadSalesCars() {
+        $('#contentRows-Sales').empty();
+        var data =
+            { QuickSearch: $('#sales-Input').val(), };
+
+        var minPriceSales = $('#min-PriceSales option:selected').val();
+        var maxPriceSales = $('#max-PriceSales option:selected').val();
+        var minYearSales = $('#min-YearSales option:selected').val();
+        var maxYearSales = $('#max-YearSales option:selected').val();
+
+        var contentRows = $('#contentRows-Sales');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:64068/Inventory/SearchNew',
+            data: data,
+            success: function (vehiclenewArray) {
+                $.each(vehiclenewArray, function (index, vehicle) {
+                    var VehicleId = vehicle.VehicleId;
+                    var ExteriorColorId = vehicle.ExteriorColorId;
+                    var InteriorColorId = vehicle.InteriorColorId;
+                    var ModelId = vehicle.ModelId;
+                    //var MakeId = vehicle.MakeId;
+                    var Year = vehicle.Year;
+                    var Price = vehicle.Price;
+                    var DateAdded = vehicle.DateAdded;
+                    var Transmission = vehicle.Transmission;
+                    var BodyStyle = vehicle.BodyStyle;
+                    var Mileage = vehicle.Mileage;
+                    var VIN = vehicle.VIN;
+                    var MSRP = vehicle.MSRP;
+                    var Description = vehicle.Description;
+                    var Condition = vehicle.Condition;
+                    var Featured = vehicle.Featured;
+                    var Model = vehicle.Model;
+                    var Make = vehicle.Make;
+                    var Picture = vehicle.Picture;
+                    var IColor = vehicle.IColor;
+                    var EColor = vehicle.EColor;
+                    var row = '<div class="container form-inline col-md-12">' +
+                        '<div class="carItem-newResult">' + '<input type="hidden" id="hidden-Id" value="' + VehicleId + '" name="VehicleId">' +
+                        '<div class="col-md-3  form-inline " id="newResult-Id">' +
+                        '<h5><strong>' + Year + ' ' + Make + ' ' + Model + '</strong></h5>' + '<img class="img-cars" src="' + Picture + '"/>' +
+                        '</div >' +
+                        '<div class="form-inline col-md-3" id="newResult-Id"><h5><strong>Body Style: </strong>' + BodyStyle + '</h5>' +
+                        '<h5><strong>Trans: </strong>' + Transmission + '</h5>' +
+                        '<h5><strong>Color: </strong>' + EColor + '</h5>' +
+                        '</div>' +
+                        '<div class="form-inline col-md-3" id="newResult-Id"><h5><strong>Interior: </strong>' + IColor + '</h5>' +
+                        '<h5><strong>Mileage: </strong>' + Mileage + '</h5>' +
+                        '<h5><strong>VIN #: </strong>' + VIN + '</h5>' +
+                        '</div>' +
+                        '<div class="form-inline col-md-3" id="newResult-Id"><h5><strong>Sale Price: </strong>$' + Price + '</h5>' +
+                        '<h5><strong>MSRP: </strong>$' + MSRP + '</h5>' +
+                        '<a href="http://localhost:64068/Sales/Purchase/?VehicleId=' + VehicleId + '" class="button" >Purchase</a>'
+                        + '</div>' +
+                        '</div >' +
+                        '</div>';
+
+                    if ((minPriceSales == 1 || (Price >= minPriceSales)) && (maxPriceSales == 99999999 || (Price <= maxPriceSales)) && (minYearSales == 1 || (Year >= minYearSales)) && (maxYearSales == 9999 || (Year <= maxYearSales))) {
+                        contentRows.append(row);
+                    }
+                })
+            }
+        })
+    }
+
+</script>
+

@@ -1,0 +1,69 @@
+﻿@model GuildCars.Models.VehicleSpecialsVM
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="bg-fade-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+
+        @foreach (var item in Model.ListOfSpecials)
+        {
+
+            if (item.SpecialsId == 1)
+            {
+                <div class="item active" id="id-carousel-slide-@item.SpecialsId">
+                    <a class="specials-Index-Details" href="@Url.Action("GetAllSpecials","Home")">
+                        <div class="slide" id="id-{@item.SpecialsId}">
+                            <h2 class="slide-text">@item.Title</h2>
+                            <h4 class="slide-text">@item.Description</h4>
+                        </div>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="item">
+                    <a class="specials-Index-Details" href="@Url.Action("GetAllSpecials","Home")">
+                        <div class="slide" id="id-{@item.SpecialsId}">
+                            <h2 class="slide-text">@item.Title</h2>
+                            <h4 class="slide-text">@item.Description</h4>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+
+    </div><!-- .carousel-inner -->
+
+</div><!-- .carousel -->
+
+<div id="content-body-id">
+<h3 id="featured-id">FEATURED VEHCILES</h3>
+<div id="contentRows" class="row">
+    @foreach (var v in Model.ListOfVehicles)
+    {
+        if (v.Featured == true)
+        {
+            <div class="col-md-3" data-VehicleId="@v.VehicleId">
+                <a class="car-Index-Details" href="@Url.Action("Details","Inventory",new {VehicleId= v.VehicleId })">
+                    <div class="carItem">
+
+                        <h4>@v.Year @v.Make @v.Model</h4>
+                        <h4>@v.Price.ToString("c")</h4>
+
+                        <img class="img-cars" src="@v.Picture" />
+
+                    </div>
+                </a>
+            </div>
+        }
+
+    }
+
+</div>
+    </div>
+<script>
+
+</script>
